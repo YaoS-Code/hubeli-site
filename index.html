@@ -3,10 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050609" />
     <title>HuBeLi | Hubery-Bella-Lilian</title>
     <meta
       name="description"
       content="HuBeLi is a young chamber trio featuring Bella on piano, Hubery Song on cello, and Lilian Ma on violin."
+    />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400..800&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/site.css" />
   </head>
@@ -35,8 +43,14 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-stage" aria-hidden="true">
-          <img class="hero-image hero-base" src="./assets/images/chamber-trio-hero.png" alt="" />
-          <img class="hero-image hero-spotlight" src="./assets/images/chamber-trio-hero.png" alt="" />
+          <picture class="hero-picture">
+            <source media="(max-width: 820px)" srcset="./assets/images/chamber-trio-hero-portrait-1.png" />
+            <img class="hero-image hero-base" src="./assets/images/chamber-trio-hero-wide-1.png" alt="" />
+          </picture>
+          <picture class="hero-picture">
+            <source media="(max-width: 820px)" srcset="./assets/images/chamber-trio-hero-portrait-1.png" />
+            <img class="hero-image hero-spotlight" src="./assets/images/chamber-trio-hero-wide-1.png" alt="" />
+          </picture>
           <img class="hero-image performer-image performer-piano" src="./assets/images/hubeli-bella-piano.png" alt="" />
           <img class="hero-image performer-image performer-cello" src="./assets/images/hubeli-hubery-cello.png" alt="" />
           <img class="hero-image performer-image performer-violin" src="./assets/images/hubeli-lilian-violin.png" alt="" />
@@ -90,30 +104,149 @@
         </div>
       </section>
 
-      <section class="content-section" id="ensemble">
-        <p class="kicker">Ensemble</p>
-        <h2>Three young musicians, one stage language.</h2>
-        <p>
-          HuBeLi brings together piano, cello, and violin in a chamber setting built around discipline, listening, and
-          polished recital presence.
-        </p>
+      <section class="content-section section-ensemble" id="ensemble">
+        <div class="section-head reveal">
+          <p class="kicker">Ensemble</p>
+          <h2>Three young musicians, one stage language.</h2>
+          <p class="section-lede">
+            HuBeLi brings together piano, cello, and violin in a chamber setting built around discipline, listening,
+            and polished recital presence.
+          </p>
+        </div>
+        <div class="member-grid">
+          <article class="member-card reveal" style="--i: 0">
+            <div class="member-photo">
+              <img
+                src="./assets/images/hubeli-hubery-cello.png"
+                alt="Hubery Song playing the cello"
+                style="object-position: 66% top"
+                loading="lazy"
+              />
+            </div>
+            <div class="member-info">
+              <span class="member-instrument">Cello</span>
+              <h3 class="member-name">Hubery Song</h3>
+              <span class="member-role">10-year-old cellist</span>
+              <p class="member-bio">
+                The resonant center of the trio, bringing warmth, pulse, and a steady musical heartbeat to the stage.
+              </p>
+            </div>
+          </article>
+          <article class="member-card reveal" style="--i: 1">
+            <div class="member-photo">
+              <img
+                src="./assets/images/hubeli-bella-piano.png"
+                alt="Bella playing the piano"
+                style="object-position: 38% top"
+                loading="lazy"
+              />
+            </div>
+            <div class="member-info">
+              <span class="member-instrument">Piano</span>
+              <h3 class="member-name">Bella</h3>
+              <span class="member-role">14-year-old pianist</span>
+              <p class="member-bio">
+                A poised pianist anchoring HuBeLi with color, phrasing, and a calm sense of harmonic shape.
+              </p>
+            </div>
+          </article>
+          <article class="member-card reveal" style="--i: 2">
+            <div class="member-photo">
+              <img
+                src="./assets/images/hubeli-lilian-violin.png"
+                alt="Lilian Ma playing the violin"
+                style="object-position: 50% top"
+                loading="lazy"
+              />
+            </div>
+            <div class="member-info">
+              <span class="member-instrument">Violin</span>
+              <h3 class="member-name">Lilian Ma</h3>
+              <span class="member-role">10-year-old violinist</span>
+              <p class="member-bio">
+                A graceful violin voice carrying melodic lines with clarity, lift, and youthful elegance.
+              </p>
+            </div>
+          </article>
+        </div>
       </section>
 
-      <section class="content-section" id="performances">
-        <p class="kicker">Performances</p>
-        <h2>Recitals, community stages, and private programs.</h2>
-        <p>
-          The trio format is designed for elegant chamber repertoire, school showcases, family concerts, and intimate
-          cultural events.
-        </p>
+      <section class="content-section section-performances" id="performances">
+        <div class="section-head reveal">
+          <p class="kicker">Performances</p>
+          <h2>Recitals, community stages, and private programs.</h2>
+          <p class="section-lede">
+            The trio format is designed for elegant chamber repertoire, school showcases, family concerts, and intimate
+            cultural events.
+          </p>
+        </div>
+        <ul class="offer-grid">
+          <li class="offer-card reveal" style="--i: 0">
+            <span class="offer-index">01</span>
+            <h3>Recitals &amp; chamber repertoire</h3>
+            <p>Curated classical programs for concert halls and recital stages.</p>
+          </li>
+          <li class="offer-card reveal" style="--i: 1">
+            <span class="offer-index">02</span>
+            <h3>School &amp; community showcases</h3>
+            <p>Engaging performances for schools, libraries, and local cultural series.</p>
+          </li>
+          <li class="offer-card reveal" style="--i: 2">
+            <span class="offer-index">03</span>
+            <h3>Family concerts</h3>
+            <p>Warm, intimate programs designed for all-ages audiences.</p>
+          </li>
+          <li class="offer-card reveal" style="--i: 3">
+            <span class="offer-index">04</span>
+            <h3>Private &amp; cultural events</h3>
+            <p>Elegant live music for celebrations, receptions, and private gatherings.</p>
+          </li>
+        </ul>
+        <div class="section-cta reveal">
+          <a class="button primary" href="#contact">Enquire about booking</a>
+        </div>
       </section>
 
-      <section class="content-section" id="contact">
-        <p class="kicker">Contact</p>
-        <h2>Booking and collaboration inquiries.</h2>
-        <p>For performance opportunities, use the contact channel connected to the final production site.</p>
+      <section class="content-section section-contact" id="contact">
+        <div class="contact-grid">
+          <div class="contact-intro reveal">
+            <p class="kicker">Contact</p>
+            <h2>Booking &amp; collaboration inquiries.</h2>
+            <p class="section-lede">
+              For recitals, showcases, and private programs, we'd love to hear about your stage and how the trio can be
+              part of it.
+            </p>
+          </div>
+          <!-- Replace the email and region below with real details before publishing. -->
+          <div class="contact-card reveal">
+            <span class="contact-label">Email</span>
+            <a class="contact-email" href="mailto:hello@hubeli.example">hello@hubeli.example</a>
+            <span class="contact-label">Based in</span>
+            <p class="contact-region">Your city / region</p>
+            <a class="button primary contact-button" href="mailto:hello@hubeli.example">Start a booking</a>
+          </div>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner reveal">
+        <a class="footer-brand" href="#top" aria-label="HuBeLi home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">
+            <strong>HuBeLi</strong>
+            <small>piano cello violin</small>
+          </span>
+        </a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#top">Home</a>
+          <a href="#ensemble">Trio</a>
+          <a href="#performances">Stage</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <p class="footer-copy">© <span id="year">2026</span> HuBeLi</p>
+      </div>
+    </footer>
 
     <script src="./scripts/site.js"></script>
   </body>

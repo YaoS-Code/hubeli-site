@@ -126,3 +126,54 @@ menuButton?.addEventListener("click", () => {
 
 updateScrollState();
 animateSpotlight();
+
+// --- Scroll reveal + nav scroll-spy (progressive enhancement) ---
+document.documentElement.classList.add("js-reveal");
+
+const reveals = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window && reveals.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+  );
+  reveals.forEach((el) => revealObserver.observe(el));
+} else {
+  reveals.forEach((el) => el.classList.add("is-visible"));
+}
+
+const navAnchors = Array.from(document.querySelectorAll(".nav-links a"));
+const spyTargets = [
+  { id: "top", el: hero },
+  { id: "ensemble", el: document.getElementById("ensemble") },
+  { id: "performances", el: document.getElementById("performances") },
+  { id: "contact", el: document.getElementById("contact") }
+].filter((target) => target.el);
+
+if ("IntersectionObserver" in window && navAnchors.length && spyTargets.length) {
+  const spy = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.dataset.spyId;
+        navAnchors.forEach((anchor) =>
+          anchor.classList.toggle("is-active", anchor.getAttribute("href") === `#${id}`)
+        );
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+  );
+  spyTargets.forEach((target) => {
+    target.el.dataset.spyId = target.id;
+    spy.observe(target.el);
+  });
+}
+
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = String(new Date().getFullYear());
