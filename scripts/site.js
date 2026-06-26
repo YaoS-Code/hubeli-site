@@ -127,6 +127,48 @@ menuButton?.addEventListener("click", () => {
 updateScrollState();
 animateSpotlight();
 
+// --- Position hero head-zones to track the cover-cropped image at any viewport ---
+const HEAD_FRACTIONS = {
+  cello: [0.56, 0.36],
+  piano: [0.69, 0.3],
+  violin: [0.89, 0.28]
+};
+const heroBaseImg = document.querySelector(".hero-base");
+const heroStage = document.querySelector(".hero-stage");
+
+function positionHeadZones() {
+  if (!heroBaseImg || !heroStage || !heroBaseImg.naturalWidth) return;
+  if (window.matchMedia("(max-width: 820px)").matches) {
+    zones.forEach((zone) => {
+      zone.style.left = "";
+      zone.style.top = "";
+      zone.style.transform = "";
+    });
+    return;
+  }
+  const w = heroStage.clientWidth;
+  const h = heroStage.clientHeight;
+  const scale = Math.max(w / heroBaseImg.naturalWidth, h / heroBaseImg.naturalHeight);
+  const renderW = heroBaseImg.naturalWidth * scale;
+  const renderH = heroBaseImg.naturalHeight * scale;
+  const offsetX = (w - renderW) * 1; // matches object-position-x: 100%
+  const offsetY = (h - renderH) * 0.5; // matches object-position-y: center
+  zones.forEach((zone) => {
+    const f = HEAD_FRACTIONS[zone.dataset.performer];
+    if (!f) return;
+    zone.style.left = `${offsetX + f[0] * renderW}px`;
+    zone.style.top = `${offsetY + f[1] * renderH}px`;
+    zone.style.transform = "translate(-50%, -50%)";
+  });
+}
+
+if (heroBaseImg) {
+  if (heroBaseImg.complete) positionHeadZones();
+  heroBaseImg.addEventListener("load", positionHeadZones);
+}
+window.addEventListener("resize", positionHeadZones);
+positionHeadZones();
+
 // --- Scroll reveal + nav scroll-spy (progressive enhancement) ---
 document.documentElement.classList.add("js-reveal");
 
