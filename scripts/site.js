@@ -5,7 +5,7 @@ const zones = Array.from(document.querySelectorAll(".head-zone"));
 
 const INTRO_SCREENS = 1;
 const PERFORMER_SCREENS = 2.25;
-const performers = ["piano", "cello", "violin"];
+const performers = ["cello", "piano", "violin"];
 
 let hoveredPerformer = null;
 let scrollPerformer = null;
