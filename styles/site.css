@@ -880,8 +880,9 @@ a {
     min-height: 680px;
     width: min(520px, 100%);
     margin-top: 0;
-    align-content: start;
-    padding: 96px 24px 34px;
+    display: flex;
+    flex-direction: column;
+    padding: 96px 24px 40px;
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto;
@@ -894,6 +895,7 @@ a {
   .hero-copy p:not(.kicker) {
     max-width: 31ch;
     font-size: 16px;
+    margin-top: auto;
   }
 
   .hero-actions {
@@ -939,7 +941,7 @@ a {
   }
 
   .member-photo {
-    aspect-ratio: 16 / 11;
+    aspect-ratio: 4 / 5;
   }
 
   .offer-grid {
