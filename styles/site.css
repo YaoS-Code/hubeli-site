@@ -821,16 +821,23 @@ a {
 
   .nav-links.is-open {
     position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
+    top: calc(100% + 10px);
     right: 0;
+    left: auto;
+    width: min(240px, 62vw);
     display: grid;
-    gap: 4px;
-    padding: 10px;
+    gap: 2px;
+    padding: 8px;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    background: rgba(4, 6, 10, 0.86);
+    border-radius: 14px;
+    background: rgba(4, 6, 10, 0.92);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .nav-links.is-open a {
+    padding: 12px 16px;
   }
 
   .nav-cta {
@@ -855,13 +862,15 @@ a {
     min-height: 680px;
   }
 
-  .hero.is-pinned .hero-stage,
-  .hero.is-pinned .hero-copy,
-  .hero.is-pinned .head-zones {
+  .hero.is-pinned .hero-stage {
     position: relative;
     top: auto;
     left: auto;
     right: auto;
+  }
+
+  .hero.is-pinned .hero-copy {
+    position: absolute;
   }
 
   .hero-copy {
@@ -871,8 +880,8 @@ a {
     min-height: 680px;
     width: min(520px, 100%);
     margin-top: 0;
-    align-content: end;
-    padding: 0 24px 34px;
+    align-content: start;
+    padding: 96px 24px 34px;
     opacity: 1 !important;
     transform: none !important;
     pointer-events: auto;
@@ -914,101 +923,10 @@ a {
     filter: none;
   }
 
+  /* Mobile: drop the desktop hover hotspots and their solo cards entirely —
+     the Ensemble section below introduces each player. */
   .head-zones {
-    position: relative;
-    display: grid;
-    gap: 14px;
-    height: auto;
-    margin-top: 0;
-    padding: 18px 16px 28px;
-    pointer-events: auto;
-  }
-
-  .head-zone {
-    position: relative;
-    left: auto;
-    top: auto;
-    width: 100%;
-    min-height: 420px;
-    overflow: hidden;
-    border-radius: 8px;
-    cursor: default;
-    background: #080b10;
-    isolation: isolate;
-  }
-
-  .head-zone::before,
-  .head-zone::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .head-zone::before {
-    z-index: -2;
-    background-position: center top;
-    background-size: cover;
-    filter: saturate(1.04) contrast(1.02);
-  }
-
-  .head-zone::after {
-    z-index: -1;
-    background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2) 36%, rgba(0, 0, 0, 0.92)),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent 62%);
-  }
-
-  .zone-piano::before {
-    background-image: url("../assets/images/hubeli-bella-piano.png");
-    background-position: 42% top;
-  }
-
-  .zone-cello::before {
-    background-image: url("../assets/images/hubeli-hubery-cello.png");
-    background-position: 67% top;
-  }
-
-  .zone-violin::before {
-    background-image: url("../assets/images/hubeli-lilian-violin.png");
-    background-position: 70% top;
-  }
-
-  .head-zone:hover .performer-copy,
-  .head-zone:focus-visible .performer-copy,
-  .head-zone.is-active .performer-copy {
-    transform: none;
-  }
-
-  .hero.has-active .hero-copy {
-    opacity: 1;
-    transform: none;
-  }
-
-  .hero.has-active .hero-base {
-    opacity: 1;
-    filter: none;
-  }
-
-  .head-zone {
-    cursor: default;
-  }
-
-  .performer-copy,
-  .hero.is-pinned .performer-copy {
-    position: absolute;
-    left: auto;
-    right: auto;
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    padding: 26px 22px 24px;
-    opacity: 1;
-    transform: none;
-  }
-
-  .performer-copy strong {
-    font-size: clamp(38px, 12vw, 54px);
+    display: none;
   }
 
   .performer-image,
