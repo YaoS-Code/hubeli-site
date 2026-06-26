@@ -156,9 +156,12 @@ function positionHeadZones() {
   zones.forEach((zone) => {
     const f = HEAD_FRACTIONS[zone.dataset.performer];
     if (!f) return;
-    zone.style.left = `${offsetX + f[0] * renderW}px`;
-    zone.style.top = `${offsetY + f[1] * renderH}px`;
-    zone.style.transform = "translate(-50%, -50%)";
+    // Position by corner (center - half size) instead of a transform: a transform
+    // on the zone would become the containing block for the performer-copy's
+    // position: fixed, pinning the text to the head instead of the viewport edge.
+    zone.style.left = `${offsetX + f[0] * renderW - zone.offsetWidth / 2}px`;
+    zone.style.top = `${offsetY + f[1] * renderH - zone.offsetHeight / 2}px`;
+    zone.style.transform = "none";
   });
 }
 
