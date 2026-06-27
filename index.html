@@ -122,6 +122,19 @@
                 style="object-position: 76% top"
                 loading="lazy"
               />
+              <button
+                class="video-play"
+                type="button"
+                data-video="https://hubery.me/uploads/hubery-cello.mp4?v=1"
+                data-poster="./assets/images/hubeli-hubery-cello.png"
+                data-title="Hubery Song — Cello"
+                aria-label="Play Hubery's cello performance"
+              >
+                <span class="video-play__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                </span>
+                <span class="video-play__label">Watch</span>
+              </button>
             </div>
             <div class="member-info">
               <span class="member-instrument">Cello</span>
@@ -247,6 +260,15 @@
         <p class="footer-copy">© <span id="year">2026</span> HuBeLi</p>
       </div>
     </footer>
+
+    <div class="video-modal" id="video-modal" hidden>
+      <div class="video-modal__backdrop" data-close></div>
+      <div class="video-modal__dialog" role="dialog" aria-modal="true" aria-label="Performance video">
+        <button class="video-modal__close" type="button" aria-label="Close video" data-close>&times;</button>
+        <p class="video-modal__title" id="video-modal-title"></p>
+        <video class="video-modal__player" id="video-modal-player" controls playsinline preload="none"></video>
+      </div>
+    </div>
 
     <script src="./scripts/site.js"></script>
   </body>

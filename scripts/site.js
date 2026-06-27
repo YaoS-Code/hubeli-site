@@ -222,3 +222,46 @@ if ("IntersectionObserver" in window && navAnchors.length && spyTargets.length) 
 
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+// --- Video lightbox ---
+const videoModal = document.getElementById("video-modal");
+if (videoModal) {
+  const player = document.getElementById("video-modal-player");
+  const titleEl = document.getElementById("video-modal-title");
+  let lastFocused = null;
+
+  const openVideo = (src, title, poster) => {
+    if (!src) return;
+    lastFocused = document.activeElement;
+    if (poster) player.poster = poster;
+    player.src = src;
+    titleEl.textContent = title || "";
+    videoModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => videoModal.classList.add("is-open"));
+    const played = player.play();
+    if (played && played.catch) played.catch(() => {});
+  };
+
+  const closeVideo = () => {
+    videoModal.classList.remove("is-open");
+    player.pause();
+    document.body.style.overflow = "";
+    window.setTimeout(() => {
+      videoModal.hidden = true;
+      player.removeAttribute("src");
+      player.load();
+    }, 220);
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  };
+
+  document.querySelectorAll(".video-play").forEach((btn) => {
+    btn.addEventListener("click", () => openVideo(btn.dataset.video, btn.dataset.title, btn.dataset.poster));
+  });
+  videoModal.querySelectorAll("[data-close]").forEach((el) => {
+    el.addEventListener("click", closeVideo);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !videoModal.hidden) closeVideo();
+  });
+}
